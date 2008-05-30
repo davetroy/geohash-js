@@ -5,7 +5,7 @@
 
 function GScript(src) {document.write('<' + 'script src="' + src + '"' +' type="text/javascript"><' + '/script>');}
 
-if (window.location.substring(0,4)=='file')
+if (window.location.toString().substr(0,4)=='file')
 	var key = "ABQIAAAAS-9BXlmhAxzk5tMQ6009tBQ60YHOa08tQ3Rk7kk6p9CpE9bRLhRgOlUOLYUPHsGwp_XgmEwZWB1hnA";
 else
 	var key = "ABQIAAAAS-9BXlmhAxzk5tMQ6009tBSuPyGFyYqpbBL0yyePbwJ9Yzj2TRSRG70K1wsky3JHARggI0ccbJ3Y0A";
@@ -30,7 +30,7 @@ GeoHashBox.prototype.centerMap = function () {
 }
 	
 GeoHashBox.prototype.showNeighbors = function () {
-	var geohashPrefix = this.geohash.substring(0,this.geohash.length-1);
+	var geohashPrefix = this.geohash.substr(0,this.geohash.length-1);
 	 
 	this.neighbors.top = new GeoHashBox(calculateAdjacent(this.geohash, 'top'));
 	this.neighbors.bottom = new GeoHashBox(calculateAdjacent(this.geohash, 'bottom'));
@@ -108,7 +108,9 @@ function plotGeoHash (gLatLng) {
 		ydistance = parseInt(ydistance+0.5);
 		units = "m";
 	}
-	searchInfo.innerHTML = "w:" + xdistance + units + ", h:" + ydistance + units + " (" + searcharea + "km2)";
+	var lat = parseInt(gLatLng.lat()*1000)/1000;
+	var lng = parseInt(gLatLng.lng()*1000)/1000;
+	searchInfo.innerHTML = lat + ", " + lng + " [w:" + xdistance + units + ", h:" + ydistance + units + "] (" + searcharea + "km2)";
 }
 
 
