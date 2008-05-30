@@ -34,7 +34,10 @@ SELECT * FROM table WHERE LEFT(geohash,6) IN ('dqcjqf','dqcjqb','dqcjr1','dqcjq9
 MORE INFORMATION
 GeoHash on Wikipedia (http://en.wikipedia.org/wiki/Geohash)
 GeoHash gem on Rubyforge (http://geohash.rubyforge.org/)
-GeoHash for Javascript (http://github.com/davetroy/geohash-js/tree/master)
+
+THIS PROJECT
+Demo Site (http://openlocation.org/geohash/geohash-js)
+Source Code (http://github.com/davetroy/geohash-js/tree/master)
 
 Please contact me at dave at roundhousetech.com with any questions you may have about this code;  right now this is experimental.  The bounding box code found here will be added to the Ruby gem soon.
 
