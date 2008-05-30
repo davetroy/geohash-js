@@ -20,10 +20,11 @@ input {
   font-family: 'Helvetica';
   text-transform: uppercase;
 }
+a {color: #3199ee;text-decoration:none} a:hover {color:#fa0;}a img{border: 0;}
 </style>
 </head>
 <body>
-  <div style="background: #000; height: 90px; padding-left: 15px; padding-top: 15px;" id="header">
+  <div style="background: #000; height: 90px; padding: 15px;" id="header">
     <input type="text" value="1600 Pennsylvania Ave, Washington, DC" id="address" name="address" size="50">
     <input type="text" value="" id="geoHash" name="geoHash">
 <select id="hashResolution" name="hashResolution">
@@ -39,6 +40,10 @@ input {
     <input type="button" value="clear" onClick="cleanUp();">
     <div id="boxList"></div>
     <div id="searchInfo"></div>
+  </div>
+  <div style="position:absolute; top:15px; width: 150px; text-align:right;" id="credits">
+    <a href="http://github.com/davetroy/geohash-js/tree/master" target="new">source code</a><br>
+    &copy; 2008 David Troy
   </div>
   <div id="map"/>
 </body>

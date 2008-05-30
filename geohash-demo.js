@@ -42,11 +42,14 @@ function wheelZoom(a) { (a.detail || -a.wheelDelta) < 0 ? map.zoomIn() : map.zoo
 function sizeMap() {
 	var dims = getWindowDimensions();
 	var mapdiv = document.getElementById("map");
-	mapdiv.style.height = dims.height-105;
+	mapdiv.style.height = dims.height-120;
 	mapdiv.style.width = dims.width;
 
 	var headerdiv = document.getElementById("header");
-	headerdiv.style.width = dims.width-15;
+	headerdiv.style.width = dims.width-30;
+
+	var creditsdiv = document.getElementById("credits");
+	creditsdiv.style.left = dims.width-180;
 	
 	map = new GMap2(mapdiv);
  	map.setCenter(new GLatLng(39.024,-76.51), 9);
@@ -107,6 +110,12 @@ function geocodeAddress () {
 }
 
 function plotGeoHash (gLatLng) {
+	if (gLatLng==null) {
+		setText('boxList', 'Location not found!');
+		setText('searchInfo', '');
+		return false;
+	}
+	
 	var geohash = encodeGeoHash(gLatLng.lat(), gLatLng.lng());
 	document.getElementById("geoHash").value = geohash;
 	var resolution = document.getElementById("hashResolution").value;
@@ -145,20 +154,18 @@ function plotGeoHash (gLatLng) {
 	// map.addOverlay(myMarker);
 }
 
-function clearSpan(s) {
+function setText(s,t) {
 	sp = document.getElementById(s);
-  sp.innerHTML = "";
+  sp.innerHTML = t;
 }
 
 function cleanUp() {
 	map.clearOverlays();
-	clearSpan('boxList');
-	clearSpan('searchInfo');	
+	setText('boxList','');
+	setText('searchInfo','');	
 }
 
-
 window.onload = function () {
-
 	if (GBrowserIsCompatible()) {
 		window.onresize = sizeMap;
 		sizeMap();
