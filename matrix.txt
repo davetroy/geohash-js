@@ -1,17 +1,10 @@
+These matrices demonstrate the formation of the geohash base 32
+pattern in both vertical and horizontal orientations.
 
-02 03 08 09 06 07 12 13 10 11 00 01 14 15 04 05 18 19 24 25 22 23 28 29 26 27 16 17 30 31 20 21
-10 11 00 01 14 15 04 05 02 03 08 09 06 07 12 13 26 27 16 17 30 31 20 21 18 19 24 25 22 23 28 29 
-
-01 04 03 06 05 16 07 18 09 12 11 14 13 24 15 26 17 20 19 22 21 00 23 02 25 28 27 30 29 08 31 10
-00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-
-00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-21 00 23 02 01 04 03 06 29 08 31 10 09 12 11 14 05 16 07 18 17 20 19 22 13 24 15 26 25 28 27 30
-
-
-odd neighbors
-00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-
+Even-length geohash strings are arranged in the 'even' pattern,
+while odd-length geohash strings take on the 'odd' pattern.
+This matrix was used to determine the neighbor relationship
+lookup tables.
 
 Even Lengths
 21 23 29 31   21 23 29 31   21 23 29 31
@@ -57,9 +50,4 @@ Odd Lengths
 02 03 06 07 18 19 22 23   02 03 06 07 18 19 22 23   02 03 06 07 18 19 22 23
 00 01 04 05 16 17 20 21   00 01 04 05 16 17 20 21   00 01 04 05 16 17 20 21
 
-DQCB -> DQF0
-c == 11
-f == 14
-
-b == 10
-0 == 0
+geohash-js code (c) 2008 David Troy;  MIT License.
