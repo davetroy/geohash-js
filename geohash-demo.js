@@ -111,6 +111,21 @@ function plotGeoHash (gLatLng) {
 	var lat = parseInt(gLatLng.lat()*1000)/1000;
 	var lng = parseInt(gLatLng.lng()*1000)/1000;
 	searchInfo.innerHTML = lat + ", " + lng + " [w:" + xdistance + units + ", h:" + ydistance + units + "] (" + searcharea + "km2)";
+
+	// var myIcon = new GIcon({image : './anchor.png', shadow : './shadow.png'});
+	// var myMarker = new GMarker(gLatLng);
+	// map.addOverlay(myMarker);
+}
+
+function clearSpan(s) {
+	sp = document.getElementById(s);
+  sp.innerHTML = "";
+}
+
+function cleanUp() {
+	map.clearOverlays();
+	clearSpan('boxList');
+	clearSpan('searchInfo');	
 }
 
 

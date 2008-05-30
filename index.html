@@ -8,6 +8,7 @@ body {
   font-weight: Bold;
   color: white;
   margin: 0px;
+  padding: 0px;
 }
 input {
   font-family: 'Helvetica';  
@@ -22,7 +23,7 @@ input {
 </style>
 </head>
 <body>
-  <div style="width:100%; background: #000; height: 10%; padding: 15px;">
+  <div style="width:100%; background: #000; height: 90px; padding-left: 15px; padding-top: 15px;">
     <input type="text" value="1600 Pennsylvania Ave, Washington, DC" id="address" name="address" size="50">
     <input type="text" value="" id="geoHash" name="geoHash">
 <select id="hashResolution" name="hashResolution">
@@ -35,11 +36,10 @@ input {
 </select>
     
     <input type="button" value="plot" onClick="geocodeAddress();">
-    <input type="button" value="clear" onClick="map.clearOverlays();">
-    <br>
-    <span id="boxList"></span><br/>
-    <span id="searchInfo"></span>
+    <input type="button" value="clear" onClick="cleanUp();">
+    <div id="boxList"></div>
+    <div id="searchInfo"></div>
   </div>
-  <div id="map" style="width:100%; height:90%;">
+  <div id="map" style="width:100%; height:800px;">
 </body>
 </html>
