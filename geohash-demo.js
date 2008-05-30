@@ -16,11 +16,39 @@ GScript('./labeledmarker.js');
 
 var ZOOMLEVELS = { 3: 7, 4 : 10, 5 : 12, 6 : 15, 7 : 17, 8 : 17 };
 	
+function getWindowDimensions () {
+	var myWidth = 0, myHeight = 0;
+	if(typeof(window.innerWidth) == 'number')
+	{
+		myWidth = window.innerWidth;
+		myHeight = window.innerHeight;
+	}
+	else if(document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight))
+	{
+		myWidth = document.documentElement.clientWidth;
+		myHeight = document.documentElement.clientHeight;
+	}
+	else if(document.body && (document.body.clientWidth || document.body.clientHeight))
+	{
+		myWidth = document.body.clientWidth;
+		myHeight = document.body.clientHeight;
+	}
+	
+	return {'width' : myWidth, 'height' : myHeight};
+}
+
 function wheelZoom(a) { (a.detail || -a.wheelDelta) < 0 ? map.zoomIn() : map.zoomOut(); }
 
 function sizeMap() {
-	map = new GMap2(document.getElementById("map"));
+	var dims = getWindowDimensions();
+	var mapdiv = document.getElementById("map");
+	mapdiv.style.height = dims.height-105;
+	mapdiv.style.width = dims.width;
 
+	var headerdiv = document.getElementById("header");
+	headerdiv.style.width = dims.width-15;
+	
+	map = new GMap2(mapdiv);
  	map.setCenter(new GLatLng(39.024,-76.51), 9);
 	map.addControl(new GSmallMapControl());	
 }
@@ -130,7 +158,9 @@ function cleanUp() {
 
 
 window.onload = function () {
+
 	if (GBrowserIsCompatible()) {
+		window.onresize = sizeMap;
 		sizeMap();
 	  GEvent.addDomListener(document.getElementById('map'), "DOMMouseScroll", wheelZoom);
 	  GEvent.addDomListener(document.getElementById('map'), "mousewheel", wheelZoom);
