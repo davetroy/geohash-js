@@ -130,7 +130,7 @@ function plotGeoHash (gLatLng) {
 	for (var n in geoHashBox.neighbors) {
 		boxes.push("'"+geoHashBox.neighbors[n].geohash+"'");
 	}
-	boxList.innerHTML += boxes.join(',') + ")";
+	boxList.innerHTML += boxes.join(',') + geoHashBox.geohash + ")";
 
 	searchInfo = document.getElementById("searchInfo");
 	var xdistance = geoHashBox.neighbors.topleft.corners.topleft.distanceFrom(geoHashBox.neighbors.topright.corners.topright);

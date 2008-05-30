@@ -28,8 +28,8 @@ However, 'dqcjqcp84c6e' is not centered inside 'dqcjqc', and searching within 'd
 So instead, we can use the mathematical properties of the Geohash to quickly calculate the neighbors of 'dqcjqc';  we find that they are:
 'dqcjqf','dqcjqb','dqcjr1','dqcjq9','dqcjqd','dqcjr4','dqcjr0','dqcjq8'
 
-This gives us a bounding box around 'dqcjqcp84c6e' roughly 2km x 1.5km and allows for a database search on fewer than 9 keys:
-SELECT * FROM table WHERE LEFT(geohash,6) IN ('dqcjqf','dqcjqb','dqcjr1','dqcjq9','dqcjqd','dqcjr4','dqcjr0','dqcjq8');
+This gives us a bounding box around 'dqcjqcp84c6e' roughly 2km x 1.5km and allows for a database search on just 9 keys:
+SELECT * FROM table WHERE LEFT(geohash,6) IN ('dqcjqc', 'dqcjqf','dqcjqb','dqcjr1','dqcjq9','dqcjqd','dqcjr4','dqcjr0','dqcjq8');
 
 MORE INFORMATION
 GeoHash on Wikipedia (http://en.wikipedia.org/wiki/Geohash)
