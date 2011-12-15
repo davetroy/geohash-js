@@ -5,7 +5,7 @@
 
 BITS = [16, 8, 4, 2, 1];
 
-BASE32 = 											   "0123456789bcdefghjkmnpqrstuvwxyz";
+BASE32 = "0123456789bcdefghjkmnpqrstuvwxyz";
 NEIGHBORS = { right  : { even :  "bc01fg45238967deuvhjyznpkmstqrwx" },
 							left   : { even :  "238967debc01fg45kmstqrwxuvhjyznp" },
 							top    : { even :  "p0r21436x8zb9dcf5h7kjnmqesgutwvy" },
@@ -39,7 +39,7 @@ function calculateAdjacent(srcHash, dir) {
 	var base = srcHash.substring(0,srcHash.length-1);
 	if (BORDERS[dir][type].indexOf(lastChr)!=-1)
 		base = calculateAdjacent(base, dir);
-	return base + BASE32[NEIGHBORS[dir][type].indexOf(lastChr)];
+	return base + BASE32.charAt(NEIGHBORS[dir][type].indexOf(lastChr));
 }
 
 function decodeGeoHash(geohash) {
@@ -50,7 +50,7 @@ function decodeGeoHash(geohash) {
 	lat_err = 90.0;  lon_err = 180.0;
 	
 	for (i=0; i<geohash.length; i++) {
-		c = geohash[i];
+		c = geohash.charAt(i);
 		cd = BASE32.indexOf(c);
 		for (j=0; j<5; j++) {
 			mask = BITS[j];
@@ -77,7 +77,7 @@ function encodeGeoHash(latitude, longitude) {
 	var bit=0;
 	var ch=0;
 	var precision = 12;
-	geohash = "";
+	var geohash = "";
 
 	lat[0] = -90.0;  lat[1] = 90.0;
 	lon[0] = -180.0; lon[1] = 180.0;
@@ -103,7 +103,7 @@ function encodeGeoHash(latitude, longitude) {
 	  if (bit < 4)
 			bit++;
 	  else {
-			geohash += BASE32[ch];
+			geohash += BASE32.charAt(ch);
 			bit = 0;
 			ch = 0;
 	  }
