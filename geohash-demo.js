@@ -61,8 +61,7 @@ GeoHashBox.prototype.centerMap = function () {
 }
 	
 GeoHashBox.prototype.showNeighbors = function () {
-	var geohashPrefix = this.geohash.substr(0,this.geohash.length-1);
-	 
+
 	this.neighbors.top = new GeoHashBox(calculateAdjacent(this.geohash, 'top'));
 	this.neighbors.bottom = new GeoHashBox(calculateAdjacent(this.geohash, 'bottom'));
 	this.neighbors.right = new GeoHashBox(calculateAdjacent(this.geohash, 'right'));
